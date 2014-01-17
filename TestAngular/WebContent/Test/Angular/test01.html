@@ -1,0 +1,37 @@
+<!-- 
+Test ngShow and ngHide
+ -->
+
+
+<!doctype html>
+<html ng-app>
+<head>
+<meta charset="UTF-8">
+<title>AngularJS</title>
+<link rel="stylesheet"
+	href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+
+<script type="text/javascript">
+	var ShowHideCtrl = function($scope) {
+		$scope.checked = false;
+		$scope.eng = 'Miho';
+	};
+</script>
+</head>
+<body>
+	<div ng-controller="ShowHideCtrl">
+		<label>Show? <input type="checkbox" ng-model="checked">
+		</label> <label>English? <input type="checkbox" ng-model="eng"
+			ng-true-value="abgne.tw" ng-false-value="MIho">
+		</label>
+		<hr>
+		<h2 ng-show="checked">{{ eng }}</h2>
+
+	</div>
+
+
+
+</body>
+</html>

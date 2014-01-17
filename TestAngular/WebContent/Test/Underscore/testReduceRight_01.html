@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript"
+	src="http://underscorejs.org/underscore-min.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		var list = [ [ 0, 1 ], [ 2, 3 ], [ 4, 5 ] ];
+		var flat = _.reduceRight(list, function(a, b) {
+			console.log(b);
+			return a.concat(b);
+		}, []);
+
+		console.log(flat);
+
+		var aa = [ 1, 2, 3, 4, 5 ];
+		var bb = _.reduceRight(aa, function(memo, value) {
+			console.log(value);
+			return memo * value;
+		}, 1);
+
+		console.log(bb);
+	</script>
+</body>
+</html>

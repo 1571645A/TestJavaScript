@@ -1,0 +1,43 @@
+<html>
+<head>
+<script type="text/javascript">
+	//http://dreamerslab.com/blog/tw/javascript-this/
+
+	var something, another;
+
+	something = {
+
+		x : 'x',
+
+		print : function(callback) {
+			console.log(this);
+			callback && callback.call(this);
+			console.log(this.x);
+		}
+	};
+
+	another = {
+
+		x : 'a',
+
+		set_x : function() {
+			this.x = 'b';
+		}
+	};
+
+	// situation a
+	something.print(function() {
+		another.set_x();
+	});
+
+	// situation b
+	something.print(another.set_x);
+
+	// situation c
+	something.print(function() {
+		another.set_x.call(this);
+	});
+</script>
+
+</head>
+</html>

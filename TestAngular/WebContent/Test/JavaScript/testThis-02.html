@@ -1,0 +1,28 @@
+<html>
+<script type="text/javascript">
+	var x = 10;
+	var obj = {
+		x : 20,
+		f : function() {
+
+			console.log(this.x);
+
+			var foo = function() {
+				console.log(this.x);
+			}
+
+			foo(); // (2)
+
+			foo.call(this);
+
+			var that = this;
+			var goo = function() {
+				console.log(that.x);
+			}
+			goo();
+		}
+	};
+
+	obj.f(); // (1)
+</script>
+</html>

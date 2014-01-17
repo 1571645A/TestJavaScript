@@ -1,0 +1,90 @@
+<!doctype html>
+<html ng-app="MyApp">
+<head>
+
+<link rel="stylesheet" type="text/css"
+	href="../../css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../../css/bootstrap-theme.min.css">
+
+<!-- 
+<script type="text/javascript"
+	src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<script type="text/javascript"
+	src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js"></script>
+ -->
+
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/ui-bootstrap-tpls-0.9.0.min.js"></script>
+
+<script>
+	angular.module('MyApp', [ 'ui.bootstrap' ])
+
+	.controller('MyCtrl', function($scope) {
+
+	})
+
+	.controller('AlertDemoCtrl', function($scope) {
+		$scope.alerts = [ {
+			type : 'danger',
+			msg : 'Oh snap! Change a few things up and try submitting again.'
+		} ];
+
+		$scope.addAlert = function() {
+			$scope.alerts.push({
+				msg : "Another alert!"
+			});
+		};
+
+		$scope.closeAlert = function(index) {
+			$scope.alerts.splice(index, 1);
+		};
+	})
+
+	.controller('TabsDemoCtrl', function($scope) {
+		$scope.tabs = [ {
+			title : "Dynamic Title 1",
+			content : "Dynamic content 1"
+		}, {
+			title : "Dynamic Title 2",
+			content : "Dynamic content 2",
+			disabled : true
+		} ];
+
+		$scope.alertMe = function() {
+			setTimeout(function() {
+				alert("You've selected the alert tab!");
+			});
+		};
+
+		$scope.navType = 'pills';
+	});
+</script>
+
+</head>
+<body>
+	<div ng-controller="MyCtrl">
+		<label>Name:</label> <input type="text" ng-model="yourName"
+			placeholder="Enter a name here">
+		<hr>
+		<h1>Hello {{yourName}}!</h1>
+	</div>
+
+	<div ng-controller="AlertDemoCtrl">
+		<alert ng-repeat="alert in alerts" type="alert.type"
+			close="closeAlert($index)">{{alert.msg}}</alert>
+		<button class='btn btn-default' ng-click="addAlert()">Add
+			Alert</button>
+	</div>
+
+	<div ng-controller="TabsDemoCtrl">
+		<tabset justified="true"> <tab heading="Justified">Justified
+		content</tab> <tab heading="SJ">Short Labeled Justified content</tab> <tab
+			heading="Long Justified">Long Labeled Justified content</tab> </tabset>
+	</div>
+
+</body>
+</html>

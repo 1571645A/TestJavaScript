@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+
+
+
+</head>
+<body>
+	<script>
+		var myJSONObject = {
+			"firstname" : "Sally",
+			"lastname" : "Rally",
+			"age" : 48,
+			"color" : "green",
+			"children" : [ {
+				"name" : "Ryan",
+				"age" : 15
+			}, {
+				"name" : "Miho",
+				"age" : 12
+			}, {
+				"name" : "Koh",
+				"age" : 9
+			} ]
+		};
+
+		function child(x) {
+			this.name = x.name;
+			this.age = x.age;
+
+			this.grow = function(i) {
+				this.age += i;
+			}
+		}
+
+		for (i = 0; i < myJSONObject.children.length; i++) {
+			childObj = new child(myJSONObject.children[i]);
+			childObj.grow(3);
+			document.write(childObj.age + "<br>");
+		}
+	</script>
+
+</body>
+</html>

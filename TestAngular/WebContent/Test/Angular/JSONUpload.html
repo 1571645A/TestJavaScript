@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="myApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+
+<script type="text/javascript">
+	var myApp = angular.module('myApp', []);
+
+	myApp.controller('myCtrl', [
+			'$scope',
+			'$http',
+			function($scope, $http) {
+
+				$scope.Person1 = {
+					name : "Ryan",
+					age : 37
+				};
+
+				$scope.Person2 = {
+					name : "Miho",
+					age : 24
+				};
+
+				$scope.Wife = "Amy";
+
+				$scope.upload = function() {
+					$http.post("MyServlet1", [ $scope.Person1, $scope.Person2 ])
+							.success(function(data) {
+								//"data" is the response from the server.
+							});
+
+				};
+
+			} ]);
+</script>
+
+</head>
+<body>
+	<div ng-controller="myCtrl">
+		<div>{{Person1.name}}</div>
+		<div>{{Person1.age}}</div>
+		<input type="button" value="Export" ng-click="upload()">Excel
+	</div>
+</body>
+</html>

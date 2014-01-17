@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<script type="text/javascript">
+	var x = 10;
+	var obj = {
+		x : 20,
+		f : function() {
+			console.log(this.x);
+		}
+	};
+
+	obj.f(); // (1)
+
+	var fOut = obj.f;
+	fOut(); //(2)
+
+	var obj2 = {
+		x : 30,
+		f : obj.f
+	}
+
+	obj2.f(); // (3)
+
+	fOut.call(obj);// (4)
+
+	obj2.f.call(obj2);// (5)
+
+	obj2.f.call(this);// (6)
+
+	obj2.f.call();// (7)
+</script>
+</html>
